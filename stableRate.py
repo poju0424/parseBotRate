@@ -1,5 +1,6 @@
 import requests, os, bs4, time
-import mysql.connector
+# import mysql.connector
+import psycopg2
 import re
 from datetime import date, datetime, timedelta
 import schedule
@@ -30,9 +31,7 @@ def fetchData():
             lastUpdateTime = nowUpdateTime
             rowElem = soup.select('table tbody tr') #per table row
             bankName = "bot"
-            cnx = mysql.connector.connect(user='jacklee', password='1234',
-                                            host='pythonDB',
-                                            database='ratedb')
+            cnx = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e0b9274e32cefa7c7610ce7b6c4226397338e8cf7bed6892624c97a2c699 host=ec2-54-163-236-33.compute-1.amazonaws.com ")
             cursor = cnx.cursor()
             for i in range(0, len(rowElem), 1):
                 colElem = rowElem[i].select('td') #per column in a row
@@ -49,14 +48,15 @@ def fetchData():
                 insertDB = ("INSERT INTO "+tableName+"" 
                         "(cashBuy, cashSell, rateBuy, rateSell, datetime) "
                         "VALUES (%(cashBuy)s, %(cashSell)s, %(rateBuy)s, %(rateSell)s, %(datetime)s)")
-                data = {
-                    'cashBuy': cashBuy,
-                    'cashSell': cashSell,
-                    'rateBuy': rateBuy,
-                    'rateSell': rateSell,
-                    'datetime': nowtime,
-                }
-                cursor.execute(insertDB, data)
+                # data = {
+                    # 'cashBuy': cashBuy,
+                    # 'cashSell': cashSell,
+                    # 'rateBuy': rateBuy,
+                    # 'rateSell': rateSell,
+                    # 'datetime': nowtime,
+                # }
+                # cursor.execute(insertDB, data)
+                cursor.execute(insertDB, (cashBuy, cashSell, rateBuy, rateSell, nowtime))
             print("fetch complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
             cnx.commit()
             cursor.close()
