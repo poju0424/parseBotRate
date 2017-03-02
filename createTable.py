@@ -6,5 +6,5 @@ conn = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e
 cursor = conn.cursor()
 # insertDB = ("CREATE TABLE IF NOT EXISTS users (sourceName varchar(255), sourceID varchar(255) UNIQUE, sourceType varchar(255) UNIQUE, tick timestamp, linkUser varchar(255), openAutoReply integer NOT NULL, Primary Key (sourceID, sourceType))")
 # cursor.execute(insertDB)
-cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
+cursor.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
 conn.commit()
