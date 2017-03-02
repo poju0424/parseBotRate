@@ -47,7 +47,7 @@ def fetchData():
                 tableName = bankName +"_"+ currency.group(1)
                 insertDB = ("INSERT INTO "+tableName+"" 
                         "(cashBuy, cashSell, rateBuy, rateSell, datetime) "
-                        "VALUES (%(cashBuy)s, %(cashSell)s, %(rateBuy)s, %(rateSell)s, %(datetime)s)")
+                        "VALUES %s, %s, %s, %s, %s)")
                 # data = {
                     # 'cashBuy': cashBuy,
                     # 'cashSell': cashSell,
@@ -57,7 +57,7 @@ def fetchData():
                 # }
                 # cursor.execute(insertDB, data)
                 print(float(cashBuy))
-                cursor.execute(insertDB, (float(cashBuy), float(cashSell), float(rateBuy), float(rateSell), float(rateSell)))
+                cursor.execute(insertDB, (float(cashBuy), float(cashSell), float(rateBuy), float(rateSell), nowtime))
             print("fetch complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
             cnx.commit()
             cursor.close()
