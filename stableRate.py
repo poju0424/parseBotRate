@@ -56,9 +56,7 @@ def fetchData():
                     # 'datetime': nowtime,
                 # }
                 # cursor.execute(insertDB, data)
-                print(cashBuy)
-                print(cashBuy[0])
-                print(type(cashBuy))
+                print(int(cashBuy))
                 cursor.execute(insertDB, (int(cashBuy), int(cashSell), int(rateBuy), int(rateSell), nowtime))
             print("fetch complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
             cnx.commit()
