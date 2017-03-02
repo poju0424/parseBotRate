@@ -6,7 +6,8 @@ cursor = conn.cursor()
 
 for i in range(0, len(tableName), 1):
     createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID int NOT NULL, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
-    cursor.execute(createTable)
-    print(i)
+    sql = "ALTER TABLE "+tableName[i]+" MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=367 ADD PRIMARY KEY (`ID`);"
+    cursor.execute(sql)
+    # print(i)
 	
 conn.commit()

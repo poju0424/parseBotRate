@@ -1,1 +1,1 @@
-web: python stableRate.py
+web: python createTable.py
