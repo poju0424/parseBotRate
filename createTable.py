@@ -6,7 +6,7 @@ conn = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e
 cursor = conn.cursor()
 
 for i in range(0, len(tableName), 1):
-    createTable = "CREATE TABLE "+tableName[i]+" (`ID` int(11) NOT NULL, `cashBuy` varchar(11) NOT NULL, `cashSell` varchar(11) NOT NULL, `rateBuy` varchar(11) NOT NULL, `rateSell` varchar(11) NOT NULL, `datetime` datetime NOT NULL)"
+    createTable = "CREATE TABLE "+tableName[i]+" (ID int(11) NOT NULL, cashBuy varchar(11) NOT NULL, cashSell varchar(11) NOT NULL, rateBuy varchar(11) NOT NULL, rateSell varchar(11) NOT NULL, datetime datetime NOT NULL)"
     cursor.execute(createTable)
     print(i)
 conn.commit()
