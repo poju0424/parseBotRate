@@ -1,1 +1,1 @@
-python stableRate.py
+python test.py
