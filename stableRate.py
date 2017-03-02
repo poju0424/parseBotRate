@@ -67,7 +67,7 @@ def fetchData():
         fetchData()
 		
 fetchData() #first time
-schedule.every(1).minutes.do(fetchData)
+schedule.every(5).minutes.do(fetchData)
 while True:
     schedule.run_pending()
-    time.sleep(30)
+    time.sleep(60)
