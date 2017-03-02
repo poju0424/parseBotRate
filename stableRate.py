@@ -6,10 +6,7 @@ import schedule
 import time
 from socket import error as SocketError
 import errno
-# import pytz
 
-#tz = pytz.timezone('Asia/Taipei')
-#lastUpdateTime = datetime.utcnow().replace(tzinfo=pytz.UTC).astimezone(tz).strftime('%Y-%m-%d %H:%M')
 lastUpdateTime = 0
 
 def fetchData():
@@ -21,7 +18,7 @@ def fetchData():
 
     print("Time to fetch~")
     try:
-        r = requests.get(url, proxies=proxies)
+        r = requests.get(url)
         soup = bs4.BeautifulSoup(r.text, "lxml")
         nowUpdateTime = soup.select('.time')
         global lastUpdateTime
