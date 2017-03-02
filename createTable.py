@@ -5,8 +5,8 @@ conn = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e
 cursor = conn.cursor()
 
 for i in range(0, len(tableName), 1):
-    # createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID int NOT NULL, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
-    createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID SERIAL PRIMARY KEY, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
+    createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID int NOT NULL, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
+    # createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID SERIAL PRIMARY KEY, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
     cursor.execute(createTable)
     # print(i)
 conn.commit()
