@@ -1,6 +1,6 @@
-Python Crawler: Automatically fetch the currency rate data from [Bank of Taiwan](http://rate.bot.com.tw/xrt?Lang=zh-TW)
+Python Crawler for Currency Rate 
 ==============
-
+Automatically fetch the currency rate data from [Bank of Taiwan](http://rate.bot.com.tw/xrt?Lang=zh-TW)
 
 Can easily build the service on Heroku
 ==============
