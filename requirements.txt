@@ -1,7 +1,5 @@
 requests
 beautifulsoup4
 lxml
-mysql-connector
-schedule
 psycopg2
 apscheduler

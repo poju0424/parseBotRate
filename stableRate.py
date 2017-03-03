@@ -1,11 +1,10 @@
 import requests, os, bs4
 import psycopg2
 import re
-import schedule
 import time
 from socket import error as SocketError
 import errno
-import datetime
+from datetime import datetime
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging
 
