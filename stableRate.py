@@ -26,8 +26,6 @@ def fetchData():
         soup = bs4.BeautifulSoup(r.text, "lxml")
         nowUpdateTime = soup.select('.time')
         global lastUpdateTime
-		# print (lastUpdateTime)
-        # print (nowUpdateTime[0].text)
         if nowUpdateTime == lastUpdateTime:
             print ("No new rate data")
         else:
@@ -36,8 +34,6 @@ def fetchData():
             bankName = "bot"
             urlparse.uses_netloc.append("postgres")
             url = urlparse.urlparse(os.environ["DATABASE_URL"])
-            # cnx = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e0b9274e32cefa7c7610ce7b6c4226397338e8cf7bed6892624c97a2c699 host=ec2-54-163-236-33.compute-1.amazonaws.com ")
-            # cnx = psycopg2.connect("dbname="+url.path[1:]+" user="+url.username+" password="+url.password+" host="+url.hostname+" port="+url.port+"")
             cnx = psycopg2.connect(
                 database=url.path[1:],
                 user=url.username,
@@ -53,41 +49,24 @@ def fetchData():
                 cashSell = colElem[2].text.replace(" ", "").strip()
                 rateBuy = colElem[3].text.replace(" ", "").strip()
                 rateSell = colElem[4].text.replace(" ", "").strip()
-                # nowtime = nowUpdateTime
-                # nowtime = datetime.strptime(nowUpdateTime, '%Y-%m-%d %H:%M')
                 nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y/%m/%d %H:%M')
                 currency = re.search('\((...)\)', name)
                 tableName = bankName +"_"+ currency.group(1)
-                # insertDB = ("INSERT INTO "+tableName+"" 
-                        # "(cashBuy, cashSell, rateBuy, rateSell, datetime) "
-                        # "VALUES (%s, %s, %s, %s, %s)")
-                # data = {
-                    # 'cashBuy': cashBuy,
-                    # 'cashSell': cashSell,
-                    # 'rateBuy': rateBuy,
-                    # 'rateSell': rateSell,
-                    # 'datetime': nowtime,
-                # }
-                # cursor.execute(insertDB, data)
                 cursor.execute(" INSERT INTO "+tableName+" (cashBuy, cashSell, rateBuy, rateSell, datetime) VALUES (%s, %s, %s, %s, %s) ", (cashBuy, cashSell, rateBuy, rateSell, nowtime))
             print("fetch complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
             cnx.commit()
             cursor.close()
             cnx.close()
     except SocketError as e:
-        # print(e) #prevent server bump
         print ("Connection failed, retrying")
         fetchData()
-		
-# fetchData() #first time
-# schedule.every(5).minutes.do(fetchData)
-# while True:
-    # schedule.run_pending()
-    # time.sleep(60)
+    except:
+        print("Unexpected error, retrying")
+        fetchData()
 
 sched = BlockingScheduler()
 def job_function():
     fetchData()
-sched.add_job(job_function, 'cron', day_of_week='mon-fri', hour="9-16", minute="*/5", timezone="Asia/Taipei")
+sched.add_job(job_function, 'cron', day_of_week='mon-fri', hour="9-16", minute="*/10", timezone="Asia/Taipei")
 sched.start()
 
