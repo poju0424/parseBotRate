@@ -5,9 +5,10 @@ import schedule
 import time
 from socket import error as SocketError
 import errno
+import datetime
 from apscheduler.schedulers.blocking import BlockingScheduler
 import logging
-import datetime
+
 
 logging.basicConfig()
 lastUpdateTime = 0
@@ -75,7 +76,7 @@ def fetchData():
     # time.sleep(60)
 
 sched = BlockingScheduler()
-@sched.scheduled_job('interval', minutes=5)
+@sched.scheduled_job('interval', minutes=1)
 def timed_job():
     fetchData()
 sched.start()
