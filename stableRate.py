@@ -1,5 +1,6 @@
 import requests, os, bs4
 import psycopg2
+import urlparse
 import re
 import time
 from socket import error as SocketError
@@ -33,7 +34,17 @@ def fetchData():
             lastUpdateTime = nowUpdateTime
             rowElem = soup.select('table tbody tr') #per table row
             bankName = "bot"
-            cnx = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e0b9274e32cefa7c7610ce7b6c4226397338e8cf7bed6892624c97a2c699 host=ec2-54-163-236-33.compute-1.amazonaws.com ")
+            urlparse.uses_netloc.append("postgres")
+            url = urlparse.urlparse(os.environ["DATABASE_URL"])
+            # cnx = psycopg2.connect("dbname=ddgd2hokh5t1r user=byfozfzreatyuo password=8f54e0b9274e32cefa7c7610ce7b6c4226397338e8cf7bed6892624c97a2c699 host=ec2-54-163-236-33.compute-1.amazonaws.com ")
+            # cnx = psycopg2.connect("dbname="+url.path[1:]+" user="+url.username+" password="+url.password+" host="+url.hostname+" port="+url.port+"")
+            cnx = psycopg2.connect(
+                database=url.path[1:],
+                user=url.username,
+                password=url.password,
+                host=url.hostname,
+                port=url.port
+            )
             cursor = cnx.cursor()
             for i in range(0, len(rowElem), 1):
                 colElem = rowElem[i].select('td') #per column in a row
