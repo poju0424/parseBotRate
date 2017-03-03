@@ -1,12 +1,11 @@
-import requests, os, bs4, time
-# import mysql.connector
+import requests, os, bs4
 import psycopg2
 import re
-from datetime import date, datetime, timedelta
 import schedule
 import time
 from socket import error as SocketError
 import errno
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 lastUpdateTime = 0
 
@@ -66,8 +65,14 @@ def fetchData():
         print ("Connection failed, retrying")
         fetchData()
 		
-fetchData() #first time
-schedule.every(5).minutes.do(fetchData)
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+# fetchData() #first time
+# schedule.every(5).minutes.do(fetchData)
+# while True:
+    # schedule.run_pending()
+    # time.sleep(60)
+
+sched = BlockingScheduler()
+@sched.scheduled_job('interval', minutes=1)
+def timed_job():
+    fetchData()
+
