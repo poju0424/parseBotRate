@@ -75,4 +75,5 @@ sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=1)
 def timed_job():
     fetchData()
+sched.start()
 
