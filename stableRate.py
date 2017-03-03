@@ -47,9 +47,9 @@ def fetchData():
                 nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y/%m/%d %H:%M')
                 currency = re.search('\((...)\)', name)
                 tableName = bankName +"_"+ currency.group(1)
-                insertDB = ("INSERT INTO "+tableName+"" 
-                        "(cashBuy, cashSell, rateBuy, rateSell, datetime) "
-                        "VALUES (%s, %s, %s, %s, %s)")
+                # insertDB = ("INSERT INTO "+tableName+"" 
+                        # "(cashBuy, cashSell, rateBuy, rateSell, datetime) "
+                        # "VALUES (%s, %s, %s, %s, %s)")
                 # data = {
                     # 'cashBuy': cashBuy,
                     # 'cashSell': cashSell,
@@ -77,6 +77,6 @@ def fetchData():
 sched = BlockingScheduler()
 def job_function():
     fetchData()
-sched.add_job(job_function, 'cron', day_of_week='mon-fri', hour="9-16", minute="*/5")
+sched.add_job(job_function, 'cron', day_of_week='mon-fri', hour="9-16", minute="*/1")
 sched.start()
 
