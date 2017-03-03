@@ -77,6 +77,6 @@ def fetchData():
 sched = BlockingScheduler()
 def job_function():
     fetchData()
-sched.add_job(job_function, 'cron', day_of_week='mon-fri', minute="*/5")
+sched.add_job(job_function, 'cron', minute="*/1")
 sched.start()
 
