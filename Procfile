@@ -1,1 +1,1 @@
-web: python stableRate.py
+clock: python stableRate.py
