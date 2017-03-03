@@ -6,7 +6,9 @@ import time
 from socket import error as SocketError
 import errno
 from apscheduler.schedulers.blocking import BlockingScheduler
+import logging
 
+logging.basicConfig()
 lastUpdateTime = 0
 
 def fetchData():
