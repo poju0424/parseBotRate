@@ -1,1 +1,1 @@
-clock: python stableRate.py
+clock: python alertDB.py
