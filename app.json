@@ -1,0 +1,14 @@
+{
+  "name": "parseBotRate",
+  "description": "Automatically fetch the currency rate data from Bank of Taiwan",
+  "repository": "https://github.com/poju0424/parseBotRate",
+  "keywords": ["python", "crawler", "heroku"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
