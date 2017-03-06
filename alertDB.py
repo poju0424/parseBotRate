@@ -19,7 +19,7 @@ cursor = cnx.cursor()
 
 for i in range(0, len(tableName), 1):
     # createTable = "CREATE TABLE IF NOT EXISTS "+tableName[i]+" (ID int NOT NULL, cashBuy varchar NOT NULL, cashSell varchar NOT NULL, rateBuy varchar NOT NULL, rateSell varchar NOT NULL, datetime timestamp NOT NULL);"
-    deleteData = "DELETE FROM "+tableName[i]+" WHERE id<95"
+    deleteData = "DELETE FROM "+tableName[i]+" WHERE id<96"
     cursor.execute(deleteData)
 cnx.commit()
 cursor.close()
