@@ -1,2 +1,2 @@
 clock: python stableRate.py
-web: python -m SimpleHTTPServer
+web: gunicorn -w 4 googlesearch:app
