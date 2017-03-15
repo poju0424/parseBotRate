@@ -3,5 +3,5 @@ beautifulsoup4
 lxml
 psycopg2
 apscheduler
-SimpleHTTPServer
+SimpleHTTPServer --pre
 SocketServer
