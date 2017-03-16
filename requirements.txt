@@ -4,3 +4,5 @@ lxml
 psycopg2
 apscheduler
 gunicorn
+Google-Search-API
+flask
