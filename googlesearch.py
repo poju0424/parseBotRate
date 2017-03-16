@@ -8,23 +8,16 @@ app.config['SECRET_KEY'] = os.environ.get('SECURE_KEY')
 
 @app.route('/')
 def home():
-    """Render website's home page."""
-    return "index"
-
-@app.route('/about/')
-def about():
-    """Render the website's about page."""
-    return "about"
+    return "black man question.jpg"
 
 @app.errorhandler(404)
 def page_not_found(error):
-    """Custom 404 page."""
     return "404"
 
-@app.route('/fetch/<name>')
-def send_text_file(name):
-    """Send your static text file."""
-    return name
+@app.route('/fetch/<word>')
+def send_text_file(word):
+    result = search(word)
+    return result
 
 if __name__ == '__main__':
     app.run(debug=True)
