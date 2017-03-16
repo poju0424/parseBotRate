@@ -25,4 +25,4 @@ if __name__ == '__main__':
 def search(keyword):
     num_page = 1
     search_results = google.search(keyword, num_page)
-    return search_results.name
+    return search_results
