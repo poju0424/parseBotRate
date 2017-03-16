@@ -22,6 +22,6 @@ def send_text_file(word):
 if __name__ == '__main__':
     app.run(debug=True)
 
-def search(keyWord):
+def search(keyword):
     num_page = 1
     search_results = google.search(keyword, num_page)
