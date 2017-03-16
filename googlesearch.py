@@ -17,7 +17,8 @@ def page_not_found(error):
 @app.route('/fetch/<word>')
 def send_text_file(word):
     result = search(word)
-    return len(result)
+    print (len(result))
+    return word
 
 if __name__ == '__main__':
     app.run(debug=True)
