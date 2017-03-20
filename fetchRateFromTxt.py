@@ -3,7 +3,7 @@ import re
 
 def CheckString(input):
     regex = r"^[A-Z][A-Z][A-Z]"
-    matches = re.finditer(regex, input)
+    matches = re.match(regex, input)
     return matches
 
 filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
