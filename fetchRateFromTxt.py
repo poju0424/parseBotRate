@@ -43,8 +43,8 @@ def FetchRate():
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
     regex = r"@(.*).txt"
     # newFileName = GetFileName(filePath)
-    newFileName = re.match(regex, GetFileName(filePath)).group(1)
-    print(newFileName)
+    newFileName = re.match(regex, GetFileName(filePath))
+    print(m.group(1))
     
     if fileName == newFileName:
         print ("No new rate data")
