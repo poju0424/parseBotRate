@@ -41,11 +41,10 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
 def FetchRate():
     global fileName
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-    regex = r"@(.*).txt"
-    # newFileName = GetFileName(filePath)
-    newFileName = re.match(regex, GetFileName(filePath))
-    print(newFileName.group(1))
+    # newFileName = GetFileName(filePath) ExchangeRate@201703201542.txt
     
+    newFileName = GetFileName(filePath)
+    print (newFileName[13:-4])
     if fileName == newFileName:
         print ("No new rate data")
     else:
