@@ -10,9 +10,8 @@ filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
 data = urllib2.urlopen(filePath)
 
 for line in data:
-    match = CheckString(line)
-    if match:
-        print process(match)
-    #print CheckString(line)
+    if CheckString(line):
+        print line.split()
+    
 
 
