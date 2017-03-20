@@ -55,7 +55,7 @@ def FetchRate():
             if CheckString(line):
                 arr = line.split()
                 print("".join(newUpdateTime[0]))
-                time = datetime.strptime("".join(newUpdateTime[0]), '%Y%m%d%H%M')
+                time = datetime.strptime(newUpdateTime, '%Y%m%d%H%M')
                 # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
                 print (arr[0], arr[2], arr[12], arr[3], arr[13], time)
         data.close()
