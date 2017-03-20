@@ -42,7 +42,7 @@ def FetchRate():
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
     newFileName = GetFileName(filePath)
     
-    if fileName == lastUpdateTime:
+    if fileName == newFileName:
         print ("No new rate data")
     else:
         fileName = newFileName
