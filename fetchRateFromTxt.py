@@ -44,7 +44,7 @@ def FetchRate():
     #ex: ExchangeRate@201703201542.txt
     
     newUpdateTime = GetFileName(filePath)[13:-4]
-    print (newUpdateTime)
+    print (newUpdateTime, updateTime)
     if updateTime == newUpdateTime:
         print ("No new rate data")
     else:
