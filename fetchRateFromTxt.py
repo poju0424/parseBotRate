@@ -64,7 +64,7 @@ try:
     FetchRate()
 except SocketError as e:
     print ("Connection failed, retrying")
-    fetchData()
+    FetchRate()
 except:
     print("Unexpected error, retrying")
-    fetchData()
+    FetchRate()
