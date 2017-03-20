@@ -9,8 +9,7 @@ fileName = ""
 
 def GetFileName(url):
     response = urllib2.urlopen(url)
-    _, params = cgi.parse_header(response.headers.get('Content-Disposition', ''))
-    return params['filename']
+    return response.info().headers
 
 def CheckString(input):
     regex = r"^[A-Z][A-Z][A-Z]"
