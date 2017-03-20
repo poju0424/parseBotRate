@@ -41,10 +41,8 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
 def FetchRate():
     global fileName
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-    # newFileName = GetFileName(filePath) ExchangeRate@201703201542.txt
-    
+    #ex: ExchangeRate@201703201542.txt 
     newFileName = GetFileName(filePath)
-    print (newFileName[13:-4])
     if fileName == newFileName:
         print ("No new rate data")
     else:
@@ -54,9 +52,9 @@ def FetchRate():
         for line in data:
             if CheckString(line):
                 arr = line.split()
-                nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y/%m/%d %H:%M')
+                nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y%m%d%H%M')
                 # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
-                print (arr[0], arr[2], arr[12], arr[3], arr[13])
+                print (arr[0], arr[2], arr[12], arr[3], arr[13], nowtime)
         data.close()
 # FetchRate()
 try:		
