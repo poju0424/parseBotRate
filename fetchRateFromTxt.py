@@ -1,6 +1,7 @@
 import urllib2
 import re
 import os
+import psycopg2
 import urlparse
 import cgi
 import logging
