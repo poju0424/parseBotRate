@@ -15,7 +15,7 @@ lines = f.readline()
 f.close()
 
 for line in lines:
-    print(line, end='')
+    print line
 
 #old----------
 logging.basicConfig()
