@@ -54,17 +54,16 @@ def FetchRate():
         for line in data:
             if CheckString(line):
                 arr = line.split()
-                print("".join(newUpdateTime[0]))
                 time = datetime.strptime(newUpdateTime, '%Y%m%d%H%M')
-                # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
-                print (arr[0], arr[2], arr[12], arr[3], arr[13], time)
+                ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
+                # print (arr[0], arr[2], arr[12], arr[3], arr[13], time)
         data.close()
-FetchRate()
-# try:		
-    # FetchRate()
-# except SocketError as e:
-    # print ("Connection failed, retrying")
-    # FetchRate()
-# except:
-    # print("Unexpected error, retrying")
-    # FetchRate()
+# FetchRate()
+try:		
+    FetchRate()
+except SocketError as e:
+    print ("Connection failed, retrying")
+    FetchRate()
+except:
+    print("Unexpected error, retrying")
+    FetchRate()
