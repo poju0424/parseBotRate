@@ -9,7 +9,8 @@ fileName = ""
 
 def GetFileName(url):
     response = urllib2.urlopen(url)
-    return response.info().headers
+    _, params = cgi.parse_header(response.headers.get('Content-Disposition', ''))
+    return params['filename']
 
 def CheckString(input):
     regex = r"^[A-Z][A-Z][A-Z]"
@@ -27,3 +28,5 @@ def FetchRate():
     for line in data:
         if CheckString(line):
             print line.split()
+
+FetchRate()
