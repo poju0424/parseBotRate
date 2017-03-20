@@ -2,6 +2,7 @@ import urllib2
 import re
 import urlparse
 import cgi
+import logging
 
 logging.basicConfig()
 fileName = ""
