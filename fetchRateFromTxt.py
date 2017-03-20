@@ -20,7 +20,7 @@ def FetchRate():
     global fileName
 	
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-	print GetFileName(filePath)
+    print GetFileName(filePath)
     data = urllib2.urlopen(filePath)
     bankName = "bot"
 
