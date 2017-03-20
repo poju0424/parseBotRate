@@ -44,7 +44,7 @@ def FetchRate():
     regex = r"@(.*).txt"
     # newFileName = GetFileName(filePath)
     newFileName = re.match(regex, GetFileName(filePath))
-    print(m.group(1))
+    print(newFileName.group(1))
     
     if fileName == newFileName:
         print ("No new rate data")
