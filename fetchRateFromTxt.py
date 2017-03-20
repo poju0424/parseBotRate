@@ -7,7 +7,7 @@ from datetime import datetime
 from socket import error as SocketError
 
 logging.basicConfig()
-fileName = ""
+updateTime = 0
 
 def GetFileName(url):
     response = urllib2.urlopen(url)
@@ -41,20 +41,22 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
 def FetchRate():
     global fileName
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-    #ex: ExchangeRate@201703201542.txt 
-    newFileName = GetFileName(filePath)
-    if fileName == newFileName:
+    #ex: ExchangeRate@201703201542.txt
+    
+    newUpdateTime = GetFileName(filePath)[13:-4]
+    print (newUpdateTime)
+    if updateTime == newUpdateTime:
         print ("No new rate data")
     else:
-        fileName = newFileName
+        updateTime = newUpdateTime
         data = urllib2.urlopen(filePath)
  
         for line in data:
             if CheckString(line):
                 arr = line.split()
-                nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y%m%d%H%M')
+                nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y/%m/%d %H:%M')
                 # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
-                print (arr[0], arr[2], arr[12], arr[3], arr[13], nowtime)
+                print (arr[0], arr[2], arr[12], arr[3], arr[13])
         data.close()
 # FetchRate()
 try:		
