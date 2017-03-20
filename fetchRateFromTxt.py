@@ -4,6 +4,7 @@ import urlparse
 import cgi
 import logging
 from datetime import datetime
+from socket import error as SocketError
 
 logging.basicConfig()
 fileName = ""
