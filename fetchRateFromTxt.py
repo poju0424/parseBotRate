@@ -9,5 +9,5 @@ for line in data:
 
 def check_string(input):
     regex = r"^[A-Z][A-Z][A-Z]"
-	matches = re.finditer(regex, input)
-	return matches
+    matches = re.finditer(regex, input)
+    return matches
