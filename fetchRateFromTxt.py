@@ -11,7 +11,7 @@ fileName = ""
 def GetFileName(url):
     response = urllib2.urlopen(url)
     _, params = cgi.parse_header(response.headers.get('Content-Disposition', ''))
-	response.close()
+    response.close()
     return params['filename']
 
 def CheckString(input):
