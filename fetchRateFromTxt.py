@@ -40,7 +40,10 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
 def FetchRate():
     global fileName
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-    newFileName = GetFileName(filePath)
+    regex = r"@(.*).txt"
+    # newFileName = GetFileName(filePath)
+    newFileName = re.match(regex, GetFileName(filePath)).group(1)
+    print(newFileName)
     
     if fileName == newFileName:
         print ("No new rate data")
@@ -51,15 +54,16 @@ def FetchRate():
         for line in data:
             if CheckString(line):
                 arr = line.split()
+                nowtime = datetime.strptime("".join(nowUpdateTime[0]), '%Y/%m/%d %H:%M')
                 # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
                 print (arr[0], arr[2], arr[12], arr[3], arr[13])
         data.close()
-FetchRate()
-# try:		
-    # FetchRate()
-# except SocketError as e:
-    # print ("Connection failed, retrying")
-    # fetchData()
-# except:
-    # print("Unexpected error, retrying")
-    # fetchData()
+# FetchRate()
+try:		
+    FetchRate()
+except SocketError as e:
+    print ("Connection failed, retrying")
+    fetchData()
+except:
+    print("Unexpected error, retrying")
+    fetchData()
