@@ -58,12 +58,12 @@ def FetchRate():
                 # ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13])
                 print (arr[0], arr[2], arr[12], arr[3], arr[13], time)
         data.close()
-# FetchRate()
-try:		
-    FetchRate()
-except SocketError as e:
-    print ("Connection failed, retrying")
-    FetchRate()
-except:
-    print("Unexpected error, retrying")
-    FetchRate()
+FetchRate()
+# try:		
+    # FetchRate()
+# except SocketError as e:
+    # print ("Connection failed, retrying")
+    # FetchRate()
+# except:
+    # print("Unexpected error, retrying")
+    # FetchRate()
