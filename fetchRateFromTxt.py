@@ -7,6 +7,7 @@ import cgi
 import logging
 from datetime import datetime
 from socket import error as SocketError
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 logging.basicConfig()
 updateTime = 0
@@ -35,7 +36,7 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
     cursor = cnx.cursor()
     tableName = "bot"+"_"+currency.lower()
     cursor.execute(" INSERT INTO "+tableName+" (cashBuy, cashSell, rateBuy, rateSell, datetime) VALUES (%s, %s, %s, %s, %s) ", (cashBuy, cashSell, rateBuy, rateSell, nowtime))
-    print("fetch complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
+    print("fetch "+currency+" complete!"+"("+datetime.now().strftime('%Y-%m-%d %H:%M:%S')+")")
     cnx.commit()
     cursor.close()
     cnx.close()
@@ -43,29 +44,30 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
 def FetchRate():
     global updateTime
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
-    #ex: ExchangeRate@201703201542.txt
-    
     newUpdateTime = GetFileName(filePath)[13:-4]
-    print (newUpdateTime, updateTime)
     if updateTime == newUpdateTime:
         print ("No new rate data")
     else:
-        updateTime = newUpdateTime
         data = urllib2.urlopen(filePath)
- 
         for line in data:
             if CheckString(line):
                 arr = line.split()
                 time = datetime.strptime(newUpdateTime, '%Y%m%d%H%M')
                 ConnectPSQL(arr[0], arr[2], arr[12], arr[3], arr[13], time)
-                # print (arr[0], arr[2], arr[12], arr[3], arr[13], time)
+        
+        updateTime = newUpdateTime
         data.close()
-FetchRate()
-# try:		
-    # FetchRate()
-# except SocketError as e:
-    # print ("Connection failed, retrying")
-    # FetchRate()
-# except:
-    # print("Unexpected error, retrying")
-    # FetchRate()
+# FetchRate()
+def job_function():
+    try:		
+        FetchRate()
+    except SocketError as e:
+        print ("Connection failed, retrying")
+        FetchRate()
+    except:
+        print("Unexpected error, retrying")
+        FetchRate()
+
+sched = BlockingScheduler()
+sched.add_job(job_function, 'cron', day_of_week='mon-fri', hour="9-16", minute="*/10", timezone="Asia/Taipei")
+sched.start()
