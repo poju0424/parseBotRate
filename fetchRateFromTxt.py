@@ -42,6 +42,7 @@ def ConnectPSQL(currency, cashBuy, cashSell, rateBuy, rateSell, nowtime):
     cnx.close()
 	
 def FetchRate():
+    print ("Time to fetch~")
     global updateTime
     filePath = "http://rate.bot.com.tw/xrt/fltxt/0/day"
     newUpdateTime = GetFileName(filePath)[13:-4]
