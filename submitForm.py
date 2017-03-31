@@ -32,9 +32,9 @@ request = urllib2.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_sear
 
 print("open new")
 
-browser = mechanize.Browser()
+# browser = mechanize.Browser()
 print("open new")
-rrr = browser.open(request)
+rrr = br.open(request)
 print("open new")
 print(rrr.read())
 print("open new")
