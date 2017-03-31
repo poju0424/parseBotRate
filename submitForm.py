@@ -12,7 +12,7 @@ print(response1.geturl())
 # print(response1.info())  # headers
 print(response1.read())  # body
 print("submit")
-br.select_form(id="ct100")
+br.select_form(action="./service_search.aspx")
 response2 = br.submit()
 print(response1.read())
 # br.select_form(name="order")
