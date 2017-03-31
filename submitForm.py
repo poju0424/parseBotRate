@@ -13,6 +13,7 @@ print(response1.geturl())
 print(response1.read())  # body
 print("submit")
 br.select_form(action="./service_search.aspx")
+print(br.form)
 response2 = br.submit()
 print(response2.read())
 # br.select_form(name="order")
@@ -24,7 +25,7 @@ print(response2.read())
 # response2 = br.submit()
 
 # print currently selected form (don't call .submit() on this, use br.submit())
-print(br.form)
+
 
 response3 = br.back()  # back to cheese shop (same data as response1)
 # the history mechanism returns cached response objects
