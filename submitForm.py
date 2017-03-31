@@ -9,13 +9,11 @@ sys.setdefaultencoding('utf8')
 
 print("start")
 br = mechanize.Browser()
-
-
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
 # follow second link with element text matching regular expression
 # response1 = br.follow_link(text_regex=r"cheese\s*shop", nr=1)
 # print(br.title())
-print(response1.geturl())
+# print(response1.geturl())
 # print(response1.info())  # headers
 print(response1.read())  # body
 
@@ -28,6 +26,8 @@ print("click")
 response2 = br.click(id="btnQuery")
 print(response2.get_data())
 
+re3 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data())
+print(re3.read())
 # print forms
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
