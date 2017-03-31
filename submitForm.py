@@ -29,7 +29,7 @@ response2 = br.click(id="btnQuery")
 print(response2.get_data())
 header = response1.info()
 request = urllib2.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data(), header)
-
+print(header)
 print("open new")
 
 # browser = mechanize.Browser()
