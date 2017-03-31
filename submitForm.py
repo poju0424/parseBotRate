@@ -18,10 +18,12 @@ response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.asp
 print(response1.geturl())
 # print(response1.info())  # headers
 print(response1.read())  # body
+
 print("submit")
+
 br.select_form(action="./service_search.aspx")
 print(br.form)
-response2 = br.submit(id="btnQuery", type="submit")
+response2 = br.click(id="btnQuery")
 print(response2.read())
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
