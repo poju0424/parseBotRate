@@ -5,12 +5,15 @@ import sys
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
+
+
+print("start")
+br = mechanize.Browser()
+
 logger = logging.getLogger("mechanize")
 logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(logging.INFO)
 
-print("start")
-br = mechanize.Browser()
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
 # follow second link with element text matching regular expression
 # response1 = br.follow_link(text_regex=r"cheese\s*shop", nr=1)
