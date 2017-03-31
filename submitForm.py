@@ -9,35 +9,49 @@ sys.setdefaultencoding('utf8')
 
 
 print("start")
-br = mechanize.Browser()
-response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
+
+# br = mechanize.Browser()
+# response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
+
+browser = mechanize.Browser()
+browser.set_handle_robots(False)
+browser.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
+browser.select_form(nr=0)
+
+browser.form['tbKWQuery'] = '新莊'
+
+req = browser.submit()
+
+print (req)
+
+
 # follow second link with element text matching regular expression
 # response1 = br.follow_link(text_regex=r"cheese\s*shop", nr=1)
 # print(br.title())
 # print(response1.geturl())
 # print(response1.info())  # headers
-print(response1.read())  # body
+# print(response1.read())  # body
 
-print("submit")
+# print("submit")
 
-br.select_form(action="./service_search.aspx")
-print(br.form)
+# br.select_form(action="./service_search.aspx")
+# print(br.form)
 
-print("click")
-response2 = br.click(id="btnQuery")
+# print("click")
+# response2 = br.click(id="btnQuery")
 
-print(response2.get_data())
-header = response1.info()
-request = mechanize.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data(), header)
+# print(response2.get_data())
+# header = response1.info()
+# request = mechanize.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data(), header)
 # print(header)
-print("open new")
+# print("open new")
 
 # browser = mechanize.Browser()
-print("open new")
-rrr = br.open(request)
-print("open new")
-print(rrr.read())
-print("open new")
+# print("open new")
+# rrr = br.open(request)
+# print("open new")
+# print(rrr.read())
+# print("open new")
 # print forms
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
