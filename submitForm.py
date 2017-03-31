@@ -10,9 +10,6 @@ sys.setdefaultencoding('utf8')
 print("start")
 br = mechanize.Browser()
 
-logger = logging.getLogger("mechanize")
-logger.addHandler(logging.StreamHandler(sys.stdout))
-logger.setLevel(logging.INFO)
 
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
 # follow second link with element text matching regular expression
