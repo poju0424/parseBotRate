@@ -33,8 +33,11 @@ request = urllib2.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_sear
 print("open new")
 
 browser = mechanize.Browser()
+print("open new"
 rrr = browser.open(request)
+print("open new"
 print(rrr.read())
+print("open new"
 # print forms
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
