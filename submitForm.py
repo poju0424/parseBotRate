@@ -30,6 +30,7 @@ print(response2.get_data())
 header = response1.info()
 request = urllib2.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data(), header)
 
+browser = mechanize.Browser()
 rrr = browser.open(request)
 print(rrr.read())
 # print forms
