@@ -1,9 +1,14 @@
 import re
 import mechanize
 import html5lib
-# import sys
-# reload(sys)  
-# sys.setdefaultencoding('utf8')
+import sys
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
+logger = logging.getLogger("mechanize")
+logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
+
 print("start")
 br = mechanize.Browser()
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
