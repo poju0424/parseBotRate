@@ -7,7 +7,7 @@ br = mechanize.Browser()
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
 # follow second link with element text matching regular expression
 # response1 = br.follow_link(text_regex=r"cheese\s*shop", nr=1)
-print(br.title())
+# print(br.title())
 print(response1.geturl())
 print(response1.info())  # headers
 print(response1.read())  # body
