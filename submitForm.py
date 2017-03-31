@@ -24,7 +24,7 @@ print("submit")
 br.select_form(action="./service_search.aspx")
 print(br.form)
 response2 = br.click(id="btnQuery")
-print(response2.read())
+print(response2)
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
 # to the selected HTMLForm.
