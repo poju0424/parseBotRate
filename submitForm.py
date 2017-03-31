@@ -1,6 +1,7 @@
 import re
 import mechanize
 import html5lib
+import urllib2
 import sys
 reload(sys)  
 sys.setdefaultencoding('utf8')
@@ -24,10 +25,13 @@ print(br.form)
 
 print("click")
 response2 = br.click(id="btnQuery")
-print(response2.get_data())
 
-re3 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data())
-print(re3.read())
+print(response2.get_data())
+header = response1.info()
+request = urllib2.Request("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx", response2.get_data(), header)
+
+rrr = browser.open(request)
+print(rrr.read())
 # print forms
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
