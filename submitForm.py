@@ -16,7 +16,7 @@ print("start")
 browser = mechanize.Browser()
 browser.set_handle_robots(False)
 browser.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
-browser.select_form(nr=0)
+browser.select_form(id="ctl00")
 
 browser.form['tbKWQuery'] = 'D2147'
 
