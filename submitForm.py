@@ -18,7 +18,7 @@ browser.set_handle_robots(False)
 browser.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
 browser.select_form(nr=0)
 
-browser.form['tbKWQuery'] = '新莊'
+browser.form['tbKWQuery'] = 'D2147'
 
 req = browser.submit()
 
