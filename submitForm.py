@@ -1,9 +1,9 @@
 import re
 import mechanize
 import html5lib
-import sys
-reload(sys)  
-sys.setdefaultencoding('utf8')
+# import sys
+# reload(sys)  
+# sys.setdefaultencoding('utf8')
 print("start")
 br = mechanize.Browser()
 response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.aspx")
@@ -16,7 +16,7 @@ print(response1.read())  # body
 print("submit")
 br.select_form(action="./service_search.aspx")
 print(br.form)
-response2 = br.submit()
+response2 = br.submit(id="btnQuery", type="submit")
 print(response2.read())
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
