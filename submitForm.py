@@ -11,7 +11,8 @@ response1 = br.open("https://vipmember.tmtd.cpc.com.tw/mbwebs/service_search.asp
 print(response1.geturl())
 # print(response1.info())  # headers
 print(response1.read())  # body
-
+print("submit")
+br.select_form(id="ct100")
 response2 = br.submit()
 print(response1.read())
 # br.select_form(name="order")
