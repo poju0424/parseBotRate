@@ -1,5 +1,6 @@
 import re
 import mechanize
+import html5lib
 
 print("start")
 br = mechanize.Browser()

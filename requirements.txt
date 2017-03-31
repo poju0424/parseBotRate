@@ -4,3 +4,4 @@ lxml
 psycopg2
 apscheduler
 mechanize
+html5lib
