@@ -1,1 +1,1 @@
-clock: python fetchRateFromTxt.py
+web: python submitForm.py
