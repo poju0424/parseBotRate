@@ -27,6 +27,8 @@ print(br.form)
 print("click")
 response2 = br.click(id="btnQuery")
 print(response2)
+forms = mechanize.ParseResponse(response2)
+print forms
 # br.select_form(name="order")
 # Browser passes through unknown attributes (including methods)
 # to the selected HTMLForm.
