@@ -1,8 +1,6 @@
 node {
   stage('SCM') {
-    git branch: 'master',
-    credentialsId: 'poju0424+t04241128',
-    url: 'https://github.com/poju0424/parseBotRate.git'
+    git([url: 'ssh://git@github.com:poju0424/parseBotRate.git', branch: 'master', credentialsId: '399e0e6d67d69627316150de230a2c125788919f'])
   }
   stage('Build + SonarQube analysis') {
     def sqScannerMsBuildHome = tool 'sonarBuild'
