@@ -1,6 +1,5 @@
 node {
   stage('SCM') {
-    git 'https://github.com/poju0424/parseBotRate.git'
     git branch: 'master',
     credentialsId: 'poju0424+t04241128',
     url: 'https://github.com/poju0424/parseBotRate.git'
