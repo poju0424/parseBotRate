@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-fn = "/test/a.txt"
+fn = "/home/jack/test/a.txt"
 try:
     file = open(fn, 'r')
 except IOError:
